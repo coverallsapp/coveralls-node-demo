@@ -13,6 +13,7 @@ describe("run", function(){
   });
 
   it ("runs method c", function(){
+    // added comment to trigger PR
     run.c(1).should.equal(1);
     run.c(0).should.equal(0);
   });
