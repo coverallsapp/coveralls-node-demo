@@ -1,5 +1,5 @@
 language: node_js
 node_js:
   - "node"
-script: make test-coveralls
+script: COVERALLS_FLAG_NAME=test-flag make test-coveralls
 sudo: false
