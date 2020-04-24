@@ -5,9 +5,10 @@ node_js:
 env:
   global:
     - COVERALLS_PARALLEL=true
-scripts:
-  - COVERALLS_FLAG_NAME=test-1 make test-coverage-1
-  - COVERALLS_FLAG_NAME=test-2 make test-coverage-2
+jobs:
+  include:
+    - script: COVERALLS_FLAG_NAME=test-1 make test-coverage-1
+    - script: COVERALLS_FLAG_NAME=test-2 make test-coverage-2
 
 notifications:
   webhooks: https://coveralls.io/webhook
