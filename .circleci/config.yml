@@ -20,6 +20,7 @@ jobs:
       - coveralls/upload:
           parallel: true
           flag_name: Test 1
+          verbose: true
 
   build-2:
     executor:
@@ -36,6 +37,7 @@ jobs:
       - coveralls/upload:
           parallel: true
           flag_name: Test 2
+          verbose: true
 
   done:
     executor:
