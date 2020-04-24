@@ -1,4 +1,4 @@
-# Coveralls Parallel Jobs Demo for CircleCI and Travis
+# Coveralls Parallel Jobs Demo
 
 [![Coverage Status](https://coveralls.io/repos/github/nickmerwin/node-demo/badge.svg?branch=master)](https://coveralls.io/github/nickmerwin/node-demo?branch=master)
 
