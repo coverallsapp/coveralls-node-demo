@@ -1,5 +1,7 @@
 # Coveralls Parallel Jobs Demo [![Coverage Status](https://coveralls.io/repos/github/nickmerwin/coveralls-node-demo/badge.svg?branch=master)](https://coveralls.io/github/coverallsapp/coveralls-node-demo?branch=master)
 
+This repo shows CI configuration examples for parallel build coverage merging when using [node-coveralls](https://github.com/nickmerwin/node-coveralls).
+
 | CI | Badge | Setup |
 | -- | -- | -- |
 | CircleCI | [![CircleCI](https://circleci.com/gh/coverallsapp/coveralls-node-demo.svg?style=svg)](https://circleci.com/gh/coverallsapp/coveralls-node-demo) | [config.yml](https://github.com/nickmerwin/coveralls-node-demo/blob/master/.circleci/config.yml) |
