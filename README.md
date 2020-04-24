@@ -3,6 +3,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/nickmerwin/node-demo/badge.svg?branch=master)](https://coveralls.io/github/nickmerwin/node-demo?branch=master)
 [![CircleCI](https://circleci.com/gh/nickmerwin/node-demo.svg?style=svg)](https://circleci.com/gh/nickmerwin/node-demo)
 [![Build Status](https://travis-ci.org/nickmerwin/node-demo.svg?branch=master)](https://travis-ci.org/nickmerwin/node-demo)
+![build](https://github.com/nickmerwin/node-demo/workflows/build/badge.svg)
 
 ## CircleCI Setup
 
