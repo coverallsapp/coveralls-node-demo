@@ -8,7 +8,11 @@
 | Travis | [![Build Status](https://travis-ci.org/nickmerwin/node-demo.svg?branch=master)](https://travis-ci.org/nickmerwin/node-demo) | [.travis.yml](https://github.com/nickmerwin/node-demo/blob/master/.travis.yml) |
 | GitHub Actions | [![build](https://github.com/nickmerwin/node-demo/workflows/build/badge.svg)](https://github.com/nickmerwin/node-demo/actions?query=workflow%3Abuild) | [workflow.yml](https://github.com/nickmerwin/node-demo/blob/master/.github/workflows/workflow.yml) |
 
-## CircleCI Setup
+### Private Repo Setup
+
+* Add your `COVERALLS_REPO_TOKEN` to the secret environment variables.
+
+### CircleCI Setup for Public Repos
 
 * Add your `COVERALLS_REPO_TOKEN` to CircleCI environment variables.
-* Enable 3rd-party Orb usage in the organization's security settings on CircleCI.
+* Enable 3rd-party Orb usage in the organization's security settings on CircleCI in order to use the Coveralls Orb.
