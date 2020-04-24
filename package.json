@@ -5,12 +5,12 @@
     "test": "make test"
   },
   "devDependencies": {
+    "coveralls": "github:nickmerwin/node-coveralls#service-job-number",
     "istanbul": "0.4.5",
     "jshint": "2.9.3",
     "mocha": "3.2.0",
     "mocha-lcov-reporter": "1.2.0",
-    "should": "9.0.2",
-    "coveralls": "3.0.14"
+    "should": "9.0.2"
   },
   "engines": {
     "node": ">=0.8.6"
