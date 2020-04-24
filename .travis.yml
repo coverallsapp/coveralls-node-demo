@@ -11,4 +11,6 @@ jobs:
     - script: COVERALLS_FLAG_NAME=test-2 make test-coveralls-2
 
 notifications:
-  webhooks: https://coveralls.io/webhook
+  webhooks:
+    - https://coveralls.io/webhook
+    - https://enjb2kwz2o8k.x.pipedream.net
