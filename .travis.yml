@@ -1,16 +1,15 @@
-#sudo: false
-#language: node_js
-#node_js:
-#  - "node"
-#env:
-#  global:
-#    #    - COVERALLS_PARALLEL=true
-#    #    - COVERALLS_ENDPOINT=https://coveralls-nick.ngrok.io
-#    #    - COVERALLS_REPO_TOKEN=Aff25AMpEmGTWwx9s0mjuakIe5AINw6H9
-#jobs:
-#  include:
-#    - script: npm run coveralls-dependencies
-#    #    - script: COVERALLS_FLAG_NAME=test-1 npm run coveralls-1
-#    #    - script: COVERALLS_FLAG_NAME=test-2 npm run coveralls-2
-#notifications:
-#  #  webhooks: https://coveralls-nick.ngrok.io/webhook
+sudo: false
+language: node_js
+node_js:
+  - "node"
+env:
+  global:
+    - COVERALLS_PARALLEL=true
+    - COVERALLS_ENDPOINT=https://coveralls-nick.ngrok.io
+    - COVERALLS_REPO_TOKEN=Aff25AMpEmGTWwx9s0mjuakIe5AINw6H9
+jobs:
+  include:
+    - script: COVERALLS_FLAG_NAME=test-1 make test-coveralls-1
+    - script: COVERALLS_FLAG_NAME=test-2 make test-coveralls-2
+notifications:
+   webhooks: https://coveralls-nick.ngrok.io/webhook
