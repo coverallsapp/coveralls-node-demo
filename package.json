@@ -4,7 +4,7 @@
   "scripts": {
     "test-1": "make test-1",
     "test-2": "make test-2",
-    "coveralls-1": "nyc --exclude-node-modules=false --reporter=text-lcov npm run test-1 | coveralls",
+    "coveralls-1": "nyc --exclude-node-modules=false --reporter=text-lcov npm run test-1",
     "coveralls-2": "nyc --exclude-node-modules=false --reporter=text-lcov npm run test-2 | coveralls"
   },
   "devDependencies": {
