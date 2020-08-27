@@ -20,7 +20,7 @@ jobs:
         with:
           version: 10.x
       - run: npm install
-      - run: npm run coverage-${{ matrix.test_number }}
+      - run: npm run test-${{ matrix.test_number }}
       - name: Coveralls
         uses: coverallsapp/github-action@v1.1.0
         env:

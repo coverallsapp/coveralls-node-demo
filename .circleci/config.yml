@@ -1,61 +1,61 @@
-version: 2.1
-
-orbs:
-  coveralls: coveralls/coveralls@1.0.5
-  node: circleci/node@1.1.6
-
-jobs:
-  build-1:
-    executor:
-      name: node/default
-
-    steps:
-      - checkout
-
-      - node/with-cache:
-          steps:
-            - run: npm install
-            - run: npm run coverage-1
-
-      - coveralls/upload:
-          parallel: true
-          flag_name: Test 1
-          verbose: true
-
-  build-2:
-    executor:
-      name: node/default
-
-    steps:
-      - checkout
-
-      - node/with-cache:
-          steps:
-            - run: npm install
-            - run: npm run coverage-2
-
-      - coveralls/upload:
-          parallel: true
-          flag_name: Test 2
-          verbose: true
-
-  done:
-    executor:
-      name: node/default
-
-    steps:
-      - run:
-        name: coveralls/upload
-        command: coveralls/upload
-        parallel_finished: true
-        environmnent:
-          - COVERALLS_ENDPOINT: https://coveralls-nick.ngrok.io
-          - COVERALLS_REPO_TOKEN: Aff25AMpEmGTWwx9s0mjuakIe5AINw6H9
-
-workflows:
-  test_parallel_then_upload:
-    jobs:
-      - build-1
-      - build-2
-      - done:
-          requires: [build-1, build-2]
+#version: 2.1
+#
+#orbs:
+#  coveralls: coveralls/coveralls@1.0.5
+#  node: circleci/node@1.1.6
+#
+#jobs:
+#  build-1:
+#    executor:
+#      name: node/default
+#
+#    steps:
+#      - checkout
+#
+#      - node/with-cache:
+#          steps:
+#            - run: npm install
+#            - run: npm run coverage-1
+#
+#      - coveralls/upload:
+#          parallel: true
+#          flag_name: Test 1
+#          verbose: true
+#
+#  build-2:
+#    executor:
+#      name: node/default
+#
+#    steps:
+#      - checkout
+#
+#      - node/with-cache:
+#          steps:
+#            - run: npm install
+#            - run: npm run coverage-2
+#
+#      - coveralls/upload:
+#          parallel: true
+#          flag_name: Test 2
+#          verbose: true
+#
+#  done:
+#    executor:
+#      name: node/default
+#
+#    steps:
+#      - run:
+#        name: coveralls/upload
+#        command: coveralls/upload
+#        parallel_finished: true
+#        environmnent:
+#          - COVERALLS_ENDPOINT: https://coveralls-nick.ngrok.io
+#          - COVERALLS_REPO_TOKEN: Aff25AMpEmGTWwx9s0mjuakIe5AINw6H9
+#
+#workflows:
+#  test_parallel_then_upload:
+#    jobs:
+#      - build-1
+#      - build-2
+#      - done:
+#          requires: [build-1, build-2]
