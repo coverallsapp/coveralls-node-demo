@@ -2,10 +2,12 @@
   "name": "node-demo",
   "version": "0.0.1",
   "scripts": {
+    "test": "make test",
     "test-1": "make test-1",
     "test-2": "make test-2",
-    "coveralls-1": "nyc --reporter=lcov --exclude-node-modules=false mocha test/run1.js && cat coverage/lcov.info && coveralls < coverage/lcov.info ",
-    "coveralls-2": "nyc --reporter=lcov --exclude-node-modules=false mocha test/run2.js && coveralls < coverage/lcov.info"
+    "coveralls": "nyc --exclude-node-modules=false --reporter=text-lcov npm run test | coveralls",
+    "coveralls-1": "nyc --exclude-node-modules=false --reporter=text-lcov npm run test-1 | coveralls",
+    "coveralls-2": "nyc --exclude-node-modules=false --reporter=text-lcov npm run test-2 | coveralls"
   },
   "devDependencies": {
     "coveralls": "3.1.0",
