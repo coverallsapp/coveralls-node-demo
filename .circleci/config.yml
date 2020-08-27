@@ -15,7 +15,7 @@ jobs:
       - node/with-cache:
           steps:
             - run: npm install
-            - run: make test-coverage-1
+            - run: npm run coverage-1
 
       - coveralls/upload:
           parallel: true
@@ -32,7 +32,7 @@ jobs:
       - node/with-cache:
           steps:
             - run: npm install
-            - run: make test-coverage-2
+            - run: npm run coverage-2
 
       - coveralls/upload:
           parallel: true
@@ -44,8 +44,13 @@ jobs:
       name: node/default
 
     steps:
-      - coveralls/upload:
-          parallel_finished: true
+      - run:
+        name: coveralls/upload
+        command: coveralls/upload
+        parallel_finished: true
+        environmnent:
+          - COVERALLS_ENDPOINT:https://coveralls-nick.ngrok.io
+          - COVERALLS_REPO_TOKEN:Aff25AMpEmGTWwx9s0mjuakIe5AINw6H9
 
 workflows:
   test_parallel_then_upload:
