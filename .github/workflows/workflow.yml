@@ -13,9 +13,9 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: environment
-          run: |
-          echo "export COVERALLS_ENDPOINT=https://coveralls-nick.ngrok.io" > ~/.bashrc
-          echo "export COVERALLS_REPO_TOKEN=Aff25AMpEmGTWwx9s0mjuakIe5AINw6H9" > ~/.bashrc
+        run: |
+        echo "export COVERALLS_ENDPOINT=https://coveralls-nick.ngrok.io" > ~/.bashrc
+        echo "export COVERALLS_REPO_TOKEN=Aff25AMpEmGTWwx9s0mjuakIe5AINw6H9" > ~/.bashrc
       - uses: actions/setup-node@master
         with:
           version: 10.x
