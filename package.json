@@ -9,8 +9,8 @@
     "coveralls-dependencies": "nyc --reporter=text-lcov --exclude-node-modules=false npm run test | coveralls",
     "coveralls-1": "nyc --exclude-node-modules=false --reporter=text-lcov npm run test-1 | coveralls",
     "coveralls-2": "nyc --exclude-node-modules=false --reporter=text-lcov npm run test-2 | coveralls",
-    "coverage-1": "nyc --exclude-node-modules=false --reporter=text-lcov npm run test-1",
-    "coverage-2": "nyc --exclude-node-modules=false --reporter=text-lcov npm run test-2"
+    "coverage-1": "nyc --exclude-node-modules=false --reporter=lcov npm run test-1",
+    "coverage-2": "nyc --exclude-node-modules=false --reporter=lcov npm run test-2"
   },
   "devDependencies": {
     "coveralls": "3.1.0",
