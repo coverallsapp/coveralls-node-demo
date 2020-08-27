@@ -8,6 +8,7 @@ describe("run", function(){
     });
 
     it ("runs method e", function(){
+        run.f().should.equal('untested');
         run.e().should.equal('blah');
     });
 });
