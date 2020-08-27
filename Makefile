@@ -4,10 +4,10 @@ test:
 	@NODE_ENV=test ./node_modules/.bin/mocha -b --reporter $(REPORTER)
 
 test-1:
-	@NODE_ENV=test ./node_modules/.bin/mocha -b --reporter $(REPORTER) test/run1.js
+	@NODE_ENV=test ./node_modules/.bin/mocha -b test/run1.js
 
 test-2:
-	@NODE_ENV=test ./node_modules/.bin/mocha -b --reporter $(REPORTER) test/run2.js
+	@NODE_ENV=test ./node_modules/.bin/mocha -b test/run2.js
 
 lint:
 	./node_modules/.bin/jshint ./lib ./test ./index.js
