@@ -4,12 +4,13 @@ node_js:
   - "node"
 env:
   global:
-    - COVERALLS_PARALLEL=true
+    #    - COVERALLS_PARALLEL=true
     - COVERALLS_ENDPOINT=https://coveralls-nick.ngrok.io
     - COVERALLS_REPO_TOKEN=Aff25AMpEmGTWwx9s0mjuakIe5AINw6H9
 jobs:
   include:
-    - script: COVERALLS_FLAG_NAME=test-1 npm run coveralls-1
-    - script: COVERALLS_FLAG_NAME=test-2 npm run coveralls-2
+    - script: npm run coveralls
+    #    - script: COVERALLS_FLAG_NAME=test-1 npm run coveralls-1
+    #    - script: COVERALLS_FLAG_NAME=test-2 npm run coveralls-2
 notifications:
-  webhooks: https://coveralls-nick.ngrok.io/webhook
+  #  webhooks: https://coveralls-nick.ngrok.io/webhook

@@ -5,7 +5,7 @@
     "test": "make test",
     "test-1": "make test-1",
     "test-2": "make test-2",
-    "coveralls": "nyc --exclude-node-modules=false --reporter=text-lcov npm run test | coveralls",
+    "coveralls": "nyc --reporter=text-lcov npm run test | coveralls",
     "coveralls-1": "nyc --exclude-node-modules=false --reporter=text-lcov npm run test-1 | coveralls",
     "coveralls-2": "nyc --exclude-node-modules=false --reporter=text-lcov npm run test-2 | coveralls"
   },
