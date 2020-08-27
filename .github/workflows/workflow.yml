@@ -14,17 +14,19 @@ jobs:
       - uses: actions/checkout@master
       - name: environment
         run: |
-          echo "export COVERALLS_ENDPOINT=https://coveralls-nick.ngrok.io" > ~/.bashrc
-          echo "export COVERALLS_REPO_TOKEN=Aff25AMpEmGTWwx9s0mjuakIe5AINw6H9" > ~/.bashrc
+          echo "export " > ~/.bashrc
+          echo "export " > ~/.bashrc
       - uses: actions/setup-node@master
         with:
           version: 10.x
       - run: npm install
-      - run: make test-coveralls-${{ matrix.test_number }}
+      - run: COVERALLS_ENDPOINT=https://coveralls-nick.ngrok.io COVERALLS_REPO_TOKEN=Aff25AMpEmGTWwx9s0mjuakIe5AINw6H9 make test-coveralls-${{ matrix.test_number }}
       - name: Coveralls
         uses: coverallsapp/github-action@v1.1.0
         env:
           NODE_COVERALLS_DEBUG: 1
+          COVERALLS_REPO_TOKEN: Aff25AMpEmGTWwx9s0mjuakIe5AINw6H9
+          COVERALLS_ENDPOINT: https://coveralls-nick.ngrok.io
         with:
           github-token: ${{ secrets.github_token }}
           parallel: true
