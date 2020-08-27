@@ -4,3 +4,5 @@ lib-cov/
 coverage.json
 npm-debug.log
 .idea
+.nyc_output
+.DS_Store
