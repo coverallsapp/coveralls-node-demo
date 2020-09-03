@@ -17,7 +17,7 @@ test-coverage-2:
 test-coveralls:
 	@NODE_ENV=test ./node_modules/.bin/istanbul cover \
 	./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && \
-		wget -q https://mer.s3.amazonaws.com/coveralls && chmod +x coveralls && \
+		wget -c -q https://mer.s3.amazonaws.com/coveralls-linux.tar.gz -O - | tar -xz && chmod +x coveralls && \
 		./coveralls -f./coverage/lcov.info
 
 test-coveralls-1:
