@@ -6,6 +6,10 @@ test:
 lint:
 	./node_modules/.bin/jshint ./lib ./test ./index.js
 
+test-coverage:
+	@NODE_ENV=test ./node_modules/.bin/istanbul cover \
+	./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec
+
 test-coverage-1:
 	@NODE_ENV=test ./node_modules/.bin/istanbul cover \
 	./node_modules/mocha/bin/_mocha --report lcovonly test/run1.js -- -R spec
