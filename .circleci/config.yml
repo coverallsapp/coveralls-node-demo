@@ -22,3 +22,4 @@ workflows:
   test_then_upload:
     jobs:
       - build
+
