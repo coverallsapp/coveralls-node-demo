@@ -37,7 +37,7 @@ jobs:
       name: node/default
 
     steps:
-      - run: wget -c -q https://github.com/coverallsapp/coverage-reporter/releases/latest/download/coveralls-linux.tar.gz -O - | tar -xz && ./coveralls -f
+      - run: wget -c -q https://github.com/coverallsapp/coverage-reporter/releases/latest/download/coveralls-linux.tar.gz -O - | tar -xz && ./coveralls -d
 
 workflows:
   test_parallel_then_upload:
