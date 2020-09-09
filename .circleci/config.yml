@@ -16,7 +16,7 @@ jobs:
             - run: npm install
             - run: make test-coverage-1
 
-      - run: wget -c -q https://github.com/coverallsapp/coverage-reporter/releases/latest/download/coveralls-linux.tar.gz -O - | tar -xz && ./coveralls -p -j "Test 1"
+      - run: wget -c -q https://coveralls.io/coveralls-linux.tar.gz -O - | tar -xz && ./coveralls --parallel -j "Test 1"
 
   build-2:
     executor:
@@ -30,14 +30,14 @@ jobs:
             - run: npm install
             - run: make test-coverage-2
 
-      - run: wget -c -q https://github.com/coverallsapp/coverage-reporter/releases/latest/download/coveralls-linux.tar.gz -O - | tar -xz && ./coveralls -p -j "Test 2"
+      - run: wget -c -q https://coveralls.io/coveralls-linux.tar.gz -O - | tar -xz && ./coveralls --parallel -j "Test 2"
 
   done:
     executor:
       name: node/default
 
     steps:
-      - run: wget -c -q https://github.com/coverallsapp/coverage-reporter/releases/latest/download/coveralls-linux.tar.gz -O - | tar -xz && ./coveralls -d
+      - run: wget -c -q https://coveralls.io/coveralls-linux.tar.gz -O - | tar -xz && ./coveralls --done
 
 workflows:
   test_parallel_then_upload:
