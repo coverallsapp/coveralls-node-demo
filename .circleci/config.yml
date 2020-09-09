@@ -4,7 +4,7 @@ orbs:
   node: circleci/node@1.1.6
 
 jobs:
-  build:
+  build-1:
     executor:
       name: node/default
 
@@ -14,12 +14,35 @@ jobs:
       - node/with-cache:
           steps:
             - run: npm install
-            - run: make test-coverage
+            - run: make test-coverage-1
 
-      - run: wget -c -q https://github.com/coverallsapp/coverage-reporter/releases/download/0.1.3/coveralls-linux.tar.gz -O - | tar -xz && ./coveralls
+      - run: wget -c -q https://github.com/coverallsapp/coverage-reporter/releases/download/0.1.3/coveralls-linux.tar.gz -O - | tar -xz && ./coveralls -p -j "Test 1"
+
+  build-2:
+    executor:
+      name: node/default
+
+    steps:
+      - checkout
+
+      - node/with-cache:
+          steps:
+            - run: npm install
+            - run: make test-coverage-2
+
+      - run: wget -c -q https://github.com/coverallsapp/coverage-reporter/releases/download/0.1.3/coveralls-linux.tar.gz -O - | tar -xz && ./coveralls -p -j "Test 2"
+
+  done:
+    executor:
+      name: node/default
+
+    steps:
+      - run: wget -c -q https://github.com/coverallsapp/coverage-reporter/releases/download/0.1.3/coveralls-linux.tar.gz -O - | tar -xz && ./coveralls -f
 
 workflows:
-  test_then_upload:
+  test_parallel_then_upload:
     jobs:
-      - build
-
+      - build-1
+      - build-2
+      - done:
+          requires: [build-1, build-2]
