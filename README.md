@@ -18,3 +18,7 @@ This repo shows CI configuration examples for parallel build coverage merging wh
 
 * Add your `COVERALLS_REPO_TOKEN` to CircleCI environment variables.
 * Enable 3rd-party Orb usage in the organization's security settings on CircleCI in order to use the Coveralls Orb.
+
+### Testing
+
+- Inconsequential repo update.
