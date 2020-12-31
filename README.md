@@ -22,3 +22,4 @@ This repo shows CI configuration examples for parallel build coverage merging wh
 ### Testing
 
 - Inconsequential repo update.
+- Another inconsequential update to generate a new build.
