@@ -1,7 +1,6 @@
 version: 2.1
 
 orbs:
-  coveralls: coveralls/coveralls@1.0.5
   node: circleci/node@1.1.6
 
 jobs:
@@ -17,10 +16,7 @@ jobs:
             - run: npm install
             - run: make test-coverage-1
 
-      - coveralls/upload:
-          parallel: true
-          flag_name: Test 1
-          verbose: true
+      - run: wget -c -q https://coveralls.io/coveralls-linux.tar.gz -O - | tar -xz && ./coveralls --parallel -j "Test 1"
 
   build-2:
     executor:
@@ -34,18 +30,14 @@ jobs:
             - run: npm install
             - run: make test-coverage-2
 
-      - coveralls/upload:
-          parallel: true
-          flag_name: Test 2
-          verbose: true
+      - run: wget -c -q https://coveralls.io/coveralls-linux.tar.gz -O - | tar -xz && ./coveralls --parallel -j "Test 2"
 
   done:
     executor:
       name: node/default
 
     steps:
-      - coveralls/upload:
-          parallel_finished: true
+      - run: wget -c -q https://coveralls.io/coveralls-linux.tar.gz -O - | tar -xz && ./coveralls --done
 
 workflows:
   test_parallel_then_upload:
