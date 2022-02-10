@@ -11,10 +11,9 @@ describe("run", function(){
     run.b(0).should.equal(0);
     run.b(1).should.equal(2);
   });
-
-  // Comment this out to trigger a new build
-  // it ("runs method c", function(){
-  //   run.c(1).should.equal(1);
-  //   run.c(0).should.equal(0);
-  // });
+  
+  it ("runs method c", function(){
+    run.c(1).should.equal(1);
+    run.c(0).should.equal(0);
+  });
 });
