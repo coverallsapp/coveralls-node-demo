@@ -16,7 +16,7 @@ jobs:
         with:
           version: 10.x
       - run: npm install
-      - run: make test-coverage-${{ matrix.test_number }}
+      - run: npm run test:covealls
       - name: Coveralls
         uses: coverallsapp/github-action@v1.1.0
         env:
