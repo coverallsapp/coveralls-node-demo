@@ -10,7 +10,6 @@ This repo shows CI configuration examples for parallel build coverage merging wh
 
 ---
 
-
 ### Private Repo Setup for Travis CI & CircleCI
 
 * Add your `COVERALLS_REPO_TOKEN` to the secret environment variables.
