@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  coveralls: coveralls/coveralls@1.0.5
+  coveralls: coveralls/coveralls@1.0.7
   node: circleci/node@1.1.6
 
 jobs:
@@ -46,6 +46,7 @@ jobs:
     steps:
       - coveralls/upload:
           parallel_finished: true
+          carryforward: "Test 1,Test 2"
 
 workflows:
   test_parallel_then_upload:

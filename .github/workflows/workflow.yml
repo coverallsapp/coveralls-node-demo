@@ -18,11 +18,10 @@ jobs:
       - run: npm install
       - run: make test-coverage-${{ matrix.test_number }}
       - name: Coveralls
-        uses: coverallsapp/github-action@v1.1.0
+        uses: coverallsapp/github-action@v1
         env:
           NODE_COVERALLS_DEBUG: 1
         with:
-          github-token: ${{ secrets.github_token }}
           parallel: true
           flag-name: run-${{ matrix.test_number }}
 
@@ -31,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Coveralls Finished
-        uses: coverallsapp/github-action@v1.1.0
+        uses: coverallsapp/github-action@v1
         with:
-          github-token: ${{ secrets.github_token }}
           parallel-finished: true
+          carryforward: "run-1,run-2"
