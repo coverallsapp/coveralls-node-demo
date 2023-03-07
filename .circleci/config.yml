@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  coveralls: coveralls/coveralls@1.0.7
+  coveralls: coveralls/coveralls@dev:9e3484cf99e6258f5deba3efcd5683a9ff65e866
   node: circleci/node@1.1.6
 
 jobs:
