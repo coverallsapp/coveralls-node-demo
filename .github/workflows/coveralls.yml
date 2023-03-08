@@ -1,0 +1,35 @@
+name: Coveralls report
+on:
+  push:
+  pull_request:
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      # NOTE: The ref value should be different when triggered by pull_request event.
+      #       See: https://github.com/lewagon/wait-on-check-action/issues/25.
+      - name: Wait on tests (PR)
+        uses: lewagon/wait-on-check-action@v1.3.1
+        if: github.event_name == 'pull_request'
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          wait-interval: 10 # seconds
+          running-workflow-name: report # the name of this job
+
+      - name: Wait on tests (push)
+        if: github.event_name != 'pull_request'
+        uses: lewagon/wait-on-check-action@v1.3.1
+        with:
+          ref: ${{ github.sha }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          wait-interval: 10 # seconds
+          running-workflow-name: report # this job name
+
+      - uses: coverallsapp/github-action@v2
+        env:
+          COVERALLS_SERVICE_NUMBER: ${{ github.sha }}
+        with:
+          carryforward: "linux-1,linux-2,macos-2,macos-2,windows-1,windows-1"
+          parallel-finished: true

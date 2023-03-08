@@ -6,7 +6,7 @@ This repo shows CI configuration examples for parallel build coverage merging wh
 | -- | -- | -- |
 | CircleCI | [![CircleCI](https://circleci.com/gh/coverallsapp/coveralls-node-demo.svg?style=svg)](https://circleci.com/gh/coverallsapp/coveralls-node-demo) | [config.yml](https://github.com/nickmerwin/coveralls-node-demo/blob/master/.circleci/config.yml) |
 | Travis | [![Build Status](https://travis-ci.org/coverallsapp/coveralls-node-demo.svg?branch=master)](https://travis-ci.org/coverallsapp/coveralls-node-demo) | [.travis.yml](https://github.com/nickmerwin/coveralls-node-demo/blob/master/.travis.yml) |
-| GitHub Actions | [![build](https://github.com/coverallsapp/coveralls-node-demo/workflows/build/badge.svg)](https://github.com/coverallsapp/coveralls-node-demo/actions?query=workflow%3Abuild) | [workflow.yml](https://github.com/nickmerwin/coveralls-node-demo/blob/master/.github/workflows/workflow.yml) |
+| GitHub Actions | [![Test (Linux)](https://github.com/coverallsapp/coveralls-node-demo/actions/workflows/linux.yml/badge.svg)](https://github.com/coverallsapp/coveralls-node-demo/actions/workflows/linux.yml)| [linux.yml](https://github.com/nickmerwin/coveralls-node-demo/blob/master/.github/workflows/linux.yml) |
 
 ---
 
