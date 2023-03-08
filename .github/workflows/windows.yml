@@ -21,6 +21,8 @@ jobs:
       - run: make test-coverage-${{ matrix.test_number }}
       - name: Coveralls
         uses: coverallsapp/github-action@v2
+        env:
+          COVERALLS_SERVICE_NUMBER: ${{ github.sha }}
         with:
           parallel: true
           flag-name: windows-${{ matrix.test_number }}
