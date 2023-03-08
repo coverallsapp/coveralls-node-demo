@@ -1,0 +1,27 @@
+name: Test (Windows)
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        test_number:
+          - 1
+          - 2
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@master
+        with:
+          version: 16.x
+      - run: npm install
+      - run: make test-coverage-${{ matrix.test_number }}
+      - name: Coveralls
+        uses: coverallsapp/github-action@v2
+        with:
+          parallel: true
+          flag-name: windows-${{ matrix.test_number }}
+          debug: true
