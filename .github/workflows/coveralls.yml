@@ -17,6 +17,7 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 10 # seconds
           running-workflow-name: report # the name of this job
+          allowed-conclusions: success,skipped,cancelled,failure
 
       - name: Wait on tests (push)
         if: github.event_name != 'pull_request'
@@ -26,6 +27,7 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 10 # seconds
           running-workflow-name: report # this job name
+          allowed-conclusions: success,skipped,cancelled,failure
 
       - uses: coverallsapp/github-action@v2
         env:
