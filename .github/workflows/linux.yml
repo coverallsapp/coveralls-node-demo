@@ -26,5 +26,4 @@ jobs:
         with:
           parallel: true
           flag-name: linux-${{ matrix.test_number }}
-          debug: true
 
