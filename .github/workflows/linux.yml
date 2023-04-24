@@ -20,7 +20,7 @@ jobs:
       - run: npm install
       - run: make test-coverage-${{ matrix.test_number }}
       - name: Coveralls
-        uses: coverallsapp/github-action@v1
+        uses: mrexox/coveralls-github-action@feat/add-debug-option
         env:
           COVERALLS_SERVICE_NUMBER: ${{ github.sha }}
         with:
