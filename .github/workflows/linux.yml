@@ -1,5 +1,8 @@
 name: Test (Linux)
 
+permissions:
+  content: read
+
 on:
   push:
   pull_request:
