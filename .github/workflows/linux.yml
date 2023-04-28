@@ -2,6 +2,7 @@ name: Test (Linux)
 
 permissions:
   contents: read
+  statuses: read
 
 on:
   # push:

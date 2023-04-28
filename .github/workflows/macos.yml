@@ -2,6 +2,7 @@ name: Test (macOS)
 
 permissions:
   contents: read
+  statuses: read
 
 on:
   # push:
