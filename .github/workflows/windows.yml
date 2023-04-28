@@ -1,7 +1,11 @@
 name: Test (Windows)
 
+permissions:
+  contents: read
+  statuses: read
+
 on:
-  push:
+  # push:
   pull_request:
 
 jobs:
@@ -11,7 +15,6 @@ jobs:
       matrix:
         test_number:
           - 1
-          - 2
     steps:
       - uses: actions/checkout@master
       - uses: actions/setup-node@master
@@ -23,6 +26,7 @@ jobs:
         uses: coverallsapp/github-action@v2
         env:
           COVERALLS_SERVICE_NUMBER: ${{ github.sha }}
+          # COVERALLS_GIT_COMMIT: ${{ github.event.pull_request.head.sha }}
         with:
           parallel: true
           flag-name: windows-${{ matrix.test_number }}

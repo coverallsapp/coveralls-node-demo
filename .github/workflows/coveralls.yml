@@ -1,6 +1,10 @@
 name: Coveralls report
+
+permissions:
+  contents: read
+
 on:
-  push:
+  # push:
   pull_request:
 
 jobs:
@@ -32,6 +36,7 @@ jobs:
       - uses: coverallsapp/github-action@v2
         env:
           COVERALLS_SERVICE_NUMBER: ${{ github.sha }}
+          # COVERALLS_GIT_COMMIT: ${{ github.event.pull_request.head.sha }}
         with:
           carryforward: "linux-1,linux-2,macos-2,macos-2,windows-1,windows-1"
           parallel-finished: true
