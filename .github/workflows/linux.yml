@@ -26,6 +26,7 @@ jobs:
         uses: coverallsapp/github-action@v1
         env:
           COVERALLS_SERVICE_NUMBER: ${{ github.sha }}
+          COVERALLS_GIT_COMMIT: ${{ github.event.pull_request.head.sha }}
         with:
           parallel: true
           flag-name: linux-${{ matrix.test_number }}
