@@ -1,30 +1,30 @@
 name: Test (Linux)
 
-on:
-  push:
-  pull_request:
+on: [ push, pull_request ]
 
 jobs:
   test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        test_number:
-          - 1
-          - 2
+        test_number: [ 1, 2 ]
     steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@master
-        with:
-          version: 16.x
-      - run: npm install
-      - run: make test-coverage-${{ matrix.test_number }}
-      - name: Coveralls
-        uses: coverallsapp/github-action@v1
-        env:
-          COVERALLS_SERVICE_NUMBER: ${{ github.sha }}
-        with:
-          parallel: true
-          flag-name: linux-${{ matrix.test_number }}
-          debug: true
-
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: lts/*
+        cache: npm
+    - run: npm ci
+    - run: npm test -- test/run${{ matrix.test_number }}.js
+    - name: Coveralls
+      uses: coverallsapp/github-action@v1
+      env:
+        COVERALLS_SERVICE_NUMBER: ${{ github.sha }}
+      with:
+        parallel: true
+        flag-name: linux-${{ matrix.test_number }}
+        debug: true
+    - uses: actions/upload-artifact@v3
+      with:
+        name: coverage-data-linux-${{ matrix.test_number }}
+        path: coverage/

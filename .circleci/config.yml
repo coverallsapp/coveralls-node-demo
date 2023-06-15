@@ -2,56 +2,43 @@ version: 2.1
 
 orbs:
   coveralls: coveralls/coveralls@2.2.0
-  node: circleci/node@1.1.6
+  node: circleci/node@5.1.0
 
 jobs:
   build-1:
-    executor:
-      name: node/default
-
+    executor: node/default
     steps:
-      - checkout
-
-      - node/with-cache:
-          steps:
-            - run: npm install
-            - run: make test-coverage-1
-
-      - coveralls/upload:
-          parallel: true
-          flag_name: Test 1
-          verbose: true
+    - checkout
+    - node/install-packages
+    - run: npm test -- test/run1.js
+    - coveralls/upload:
+        parallel: true
+        flag_name: Test 1
+        verbose: true
 
   build-2:
-    executor:
-      name: node/default
-
+    executor: node/default
     steps:
-      - checkout
-
-      - node/with-cache:
-          steps:
-            - run: npm install
-            - run: make test-coverage-2
-
-      - coveralls/upload:
-          parallel: true
-          flag_name: Test 2
-          verbose: true
+    - checkout
+    - node/install-packages
+    - run: npm test -- test/run2.js
+    - coveralls/upload:
+        parallel: true
+        flag_name: Test 2
+        verbose: true
 
   done:
-    executor:
-      name: node/default
+    executor: node/default
 
     steps:
-      - coveralls/upload:
-          parallel_finished: true
-          carryforward: "Test 1,Test 2"
+    - coveralls/upload:
+        parallel_finished: true
+        carryforward: "Test 1,Test 2"
 
 workflows:
   test_parallel_then_upload:
     jobs:
-      - build-1
-      - build-2
-      - done:
-          requires: [build-1, build-2]
+    - build-1
+    - build-2
+    - done:
+        requires: [ build-1, build-2 ]

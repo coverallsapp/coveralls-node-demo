@@ -1,7 +1,6 @@
 name: Coveralls report
-on:
-  push:
-  pull_request:
+
+on: [ push, pull_request ]
 
 jobs:
   report:

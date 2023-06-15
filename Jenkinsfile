@@ -3,12 +3,12 @@ pipeline {
   stages {
     stage('Setup') {
       steps {
-        sh 'npm install'
+        sh 'npm ci'
       }
     }
     stage('Build') {
       steps {
-        sh 'make test-coveralls'
+        sh 'npm test && npm run upload-coverage'
       }
     }
   }
