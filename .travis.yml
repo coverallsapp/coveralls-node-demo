@@ -1,13 +1,24 @@
-sudo: false
+---
+os: linux
+dist: jammy
+
 language: node_js
-node_js:
-  - "node"
+node_js: lts/*
+cache:
+  directories: ~/.npm
+
+before_script: npm install -g npm@latest
+
 env:
   global:
-    - COVERALLS_PARALLEL=true
+  - COVERALLS_PARALLEL=true
+
+install: npm ci
+
 jobs:
   include:
-    - script: COVERALLS_FLAG_NAME=test-1 make test-coveralls-1
-    - script: COVERALLS_FLAG_NAME=test-2 make test-coveralls-2
+  - script: npm test -- test/run1.js && COVERALLS_FLAG_NAME=test-1 npm run upload-coverage
+  - script: npm test -- test/run2.js && COVERALLS_FLAG_NAME=test-2 npm run upload-coverage
+
 notifications:
   webhooks: https://coveralls.io/webhook

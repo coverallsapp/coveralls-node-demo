@@ -1,37 +1,33 @@
-name: Coveralls report
-on:
-  push:
-  pull_request:
+name: Test all platforms
+
+on: [ push, pull_request ]
 
 jobs:
-  report:
+  test-linux:
+    uses: ./.github/workflows/test.yml
+    secrets:
+      token: ${{ secrets.COVERALLS_REPO_TOKEN }}
+
+  test-macos:
+    uses: ./.github/workflows/test.yml
+    with:
+      os: macos
+    secrets:
+      token: ${{ secrets.COVERALLS_REPO_TOKEN }}
+
+  test-windows:
+    uses: ./.github/workflows/test.yml
+    with:
+      os: windows
+    secrets:
+      token: ${{ secrets.COVERALLS_REPO_TOKEN }}
+
+  coveralls:
     runs-on: ubuntu-latest
+    if: ${{ always() }}
+    needs: [test-linux, test-macos, test-windows]
     steps:
-      # NOTE: The ref value should be different when triggered by pull_request event.
-      #       See: https://github.com/lewagon/wait-on-check-action/issues/25.
-      - name: Wait on tests (PR)
-        uses: lewagon/wait-on-check-action@v1.3.1
-        if: github.event_name == 'pull_request'
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          wait-interval: 10 # seconds
-          running-workflow-name: report # the name of this job
-          allowed-conclusions: success,skipped,cancelled,failure
-
-      - name: Wait on tests (push)
-        if: github.event_name != 'pull_request'
-        uses: lewagon/wait-on-check-action@v1.3.1
-        with:
-          ref: ${{ github.sha }}
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          wait-interval: 10 # seconds
-          running-workflow-name: report # this job name
-          allowed-conclusions: success,skipped,cancelled,failure
-
-      - uses: coverallsapp/github-action@v2
-        env:
-          COVERALLS_SERVICE_NUMBER: ${{ github.sha }}
-        with:
-          carryforward: "linux-1,linux-2,macos-2,macos-2,windows-1,windows-1"
-          parallel-finished: true
+    - uses: coverallsapp/github-action@v2
+      with:
+        carryforward: "linux-1,linux-2,macos-2,macos-2,windows-1,windows-1"
+        parallel-finished: true

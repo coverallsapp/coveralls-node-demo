@@ -2,18 +2,20 @@
   "name": "node-demo",
   "version": "0.0.1",
   "scripts": {
-    "test": "make test"
+    "test": "nyc -r lcov -r text mocha",
+    "upload-coverage": "coveralls < ./coverage/lcov.info",
+    "lint": "jshint ./lib ./test ./index.js"
   },
   "devDependencies": {
-    "coveralls": "3.1.0",
-    "istanbul": "0.4.5",
-    "jshint": "^2.11.0",
-    "mocha": "^7.1.1",
-    "mocha-lcov-reporter": "1.2.0",
-    "should": "9.0.2"
+    "coveralls-next": "^4.2.0",
+    "jshint": "^2.13.6",
+    "mocha": "^10.2.0",
+    "mocha-lcov-reporter": "^1.3.0",
+    "nyc": "^15.1.0",
+    "should": "^13.2.3"
   },
   "engines": {
-    "node": ">=0.8.6"
+    "node": ">= 18"
   },
   "main": "index.js",
   "directories": {
