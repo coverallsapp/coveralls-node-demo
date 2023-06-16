@@ -1,0 +1,38 @@
+name: Standalone Coveralls Report
+
+on: [ pull_request ]
+
+# In this workflow we will:
+# - wait for all sibling workflows to finish
+# - download artifacts with coverage reports from `coveralls` workflow
+# - send acquired artifacts to Coveralls as single report
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Wait on tests (PR)
+      uses: lewagon/wait-on-check-action@v1.3.1
+      with:
+        # NOTE: The ref value should be different when triggered by pull_request event.
+        #       See: https://github.com/lewagon/wait-on-check-action/issues/25.
+        ref: ${{ github.event.pull_request.head.sha }}
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        wait-interval: 10 # seconds
+        running-workflow-name: report # the name of this job
+        allowed-conclusions: success,skipped,cancelled,failure
+
+    - name: Download artifact
+      id: download-artifact
+      uses: dawidd6/action-download-artifact@v2
+      with:
+        github_token: ${{secrets.GITHUB_TOKEN}}
+        pr: ${{github.event.pull_request.number}}
+        workflow: coveralls.yml
+        workflow_conclusion: success
+
+    - uses: coverallsapp/github-action@v2
+      with:
+        format: lcov
+        debug: true
