@@ -33,7 +33,7 @@ jobs:
     steps:
     - coveralls/upload:
         parallel_finished: true
-        carryforward: "Test 1,Test 2"
+        carryforward: "all"
 
 workflows:
   test_parallel_then_upload:
@@ -41,4 +41,6 @@ workflows:
     - build-1
     - build-2
     - done:
-        requires: [ build-1, build-2 ]
+        requires:
+          - build-1
+          - build-2
