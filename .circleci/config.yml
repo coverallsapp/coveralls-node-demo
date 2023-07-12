@@ -41,6 +41,4 @@ workflows:
     - build-1
     - build-2
     - done:
-        requires:
-          - build-1
-          - build-2
+        requires: [ build-1, build-2 ]
