@@ -52,10 +52,13 @@ jobs:
     - name: Coveralls
       id: coveralls
       if: ${{ inputs.upload_coverage }}
-      uses: coverallsapp/github-action@v2
+      uses: coverallsapp/github-action@release/v2
       with:
         parallel: true
         flag-name: ${{ inputs.os }}-${{ matrix.test_number }}
+        files: coverage/*lcov*
+        fail-on-error: false
+        measure: true
         debug: true
     - uses: actions/upload-artifact@v3
       if: ${{ inputs.store_coverage }}
