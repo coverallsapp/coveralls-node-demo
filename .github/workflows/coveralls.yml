@@ -31,3 +31,4 @@ jobs:
       with:
         carryforward: "linux-1,linux-2,macos-2,macos-2,windows-1,windows-1"
         parallel-finished: true
+        debug: true
