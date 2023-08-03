@@ -30,5 +30,6 @@ jobs:
     - uses: coverallsapp/github-action@v2
       with:
         carryforward: "linux-1,linux-2,macos-2,macos-2,windows-1,windows-1"
+        coveralls-endpoint: https://beta.coveralls.io
         parallel-finished: true
         debug: true

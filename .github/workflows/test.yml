@@ -55,6 +55,7 @@ jobs:
       uses: coverallsapp/github-action@v2
       with:
         parallel: true
+        coveralls-endpoint: https://beta.coveralls.io
         flag-name: ${{ inputs.os }}-${{ matrix.test_number }}
         debug: true
     - uses: actions/upload-artifact@v3
