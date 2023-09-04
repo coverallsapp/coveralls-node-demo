@@ -52,7 +52,7 @@ jobs:
     - name: Coveralls
       id: coveralls
       if: ${{ inputs.upload_coverage }}
-      uses: coverallsapp/github-action@v2
+      uses: mrexox/coveralls-github-action@feat/use-pwsh-for-windows
       with:
         parallel: true
         flag-name: ${{ inputs.os }}-${{ matrix.test_number }}
