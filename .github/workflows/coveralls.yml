@@ -27,7 +27,7 @@ jobs:
     if: ${{ always() }}
     needs: [test-linux, test-macos, test-windows]
     steps:
-    - uses: mrexox/coveralls-github-action@feat/use-pwsh-for-windows
+    - uses: coverallsapp/github-action@v2
       with:
         carryforward: "linux-1,linux-2,macos-2,macos-2,windows-1,windows-1"
         parallel-finished: true
