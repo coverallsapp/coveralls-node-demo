@@ -23,14 +23,10 @@ on:
         type: boolean
         default: true
         description: |
-          Whether to store the coverage data as an artifact.
-    secrets:
-      token:
-        required: true
+          Whether to store the coverage data as an artifact.        
 
 env:
   COVERALLS_SERVICE_NUMBER: ${{ inputs.build_id }}
-  COVERALLS_REPO_TOKEN: ${{ secrets.token }}
 
 jobs:
   test:
@@ -42,7 +38,7 @@ jobs:
       build_id: ${{ inputs.build_id }}
       result: ${{ steps.coveralls.outputs.coveralls-api-result}}
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - uses: actions/setup-node@v3
       with:
         node-version: lts/*

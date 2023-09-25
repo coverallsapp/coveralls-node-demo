@@ -5,29 +5,25 @@ on: [ push, pull_request ]
 jobs:
   test-linux:
     uses: ./.github/workflows/test.yml
-    secrets:
-      token: ${{ secrets.COVERALLS_REPO_TOKEN }}
 
   test-macos:
     uses: ./.github/workflows/test.yml
     with:
       os: macos
-    secrets:
-      token: ${{ secrets.COVERALLS_REPO_TOKEN }}
 
   test-windows:
     uses: ./.github/workflows/test.yml
     with:
       os: windows
-    secrets:
-      token: ${{ secrets.COVERALLS_REPO_TOKEN }}
 
   coveralls:
     runs-on: ubuntu-latest
     if: ${{ always() }}
     needs: [test-linux, test-macos, test-windows]
+    env:
+      COVERALLS_SERVICE_NUMBER: ${{ github.run_id }}-${{ github.run_number }}-${{ github.run_attempt }}
     steps:
     - uses: coverallsapp/github-action@v2
       with:
-        carryforward: "linux-1,linux-2,macos-2,macos-2,windows-1,windows-1"
+        carryforward: "all"
         parallel-finished: true
